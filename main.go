@@ -42,7 +42,11 @@ for {
 		println("Enter number of tickets!")
 		fmt.Scan(&userTickets)
 
-		if userTickets < remainingTickets{
+		isValidName := len(firstName)>=2 && len(lastName)>=2
+		isValidEmail := strings.Contains(email,"@")
+		isValidTicketNumber := userTickets > 0 && userTickets <= remainingTickets
+
+		if isValidEmail && isValidName && isValidTicketNumber{
 
 			//lets print the contents of the bookings array
 			fmt.Printf("The whole slice : %v \n", bookings)
@@ -61,23 +65,23 @@ for {
 			}
 
 			fmt.Printf("The first names of th bookings are : %v\n",firstNames)
+
+			if remainingTickets == 0{
+
+				//end program
+				fmt.Println("Our Conference is booked out. Come back next year.")
+				break
+	
+			}
 				
-		} else if uint(userTickets) == (remainingTickets){
-			//do something else
-		}else{
-				fmt.Printf("we oly have %v tickets left so you cant book %v tickets\n", remainingTickets, userTickets)
+		} else{
+				fmt.Println("Your input data is invalid. Try again")
 			}
 		
 		
 
 		
-		if remainingTickets == 0{
-
-			//end program
-			fmt.Println("Our Conference is booked out. Come back next year.")
-			break
-
-		}
+		
 		
 	}
 }
