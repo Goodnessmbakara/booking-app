@@ -15,6 +15,12 @@ func main(){
 	fmt.Printf("pick up your tickets to attend.\n")
 
 
+
+	// we want t0 create an array to store bookings
+
+	var bookings = [50]string{}
+	
+
 	var firstName string
 	var lastName string
 	var email string
@@ -33,9 +39,17 @@ func main(){
 	println("Enter number of tickets!")
 	fmt.Scan(&userTickets)
 
-	fmt.Printf("Thank you  %v %v for booking %v tickets. You will receive a confirmation email at %v \n",firstName,lastName,userTickets,email)
-	remainingTickets  = uint(remainingTickets) - uint(userTickets)
 
+	remainingTickets  = uint(remainingTickets) - uint(userTickets)
+	bookings[0] = firstName + " " + lastName
+
+	//lets print the contents of the bookings array
+	fmt.Printf("The whole array : %v ", bookings)
+	fmt.Printf("The first value of the  array : %v ", bookings[0])
+	fmt.Printf("The type of the array : %T ", bookings)
+	fmt.Printf("The length of the array : %v ", len(bookings))
+
+	fmt.Printf("Thank you  %v %v for booking %v tickets. You will receive a confirmation email at %v \n",firstName,lastName,userTickets,email)
 	fmt.Printf("%v tickets remaining for the %v", remainingTickets, conferenceName)
 
 
