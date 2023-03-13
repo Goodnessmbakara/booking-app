@@ -18,7 +18,7 @@ func main(){
 
 	// we want t0 create an array to store bookings
 
-	var bookings = [50]string{}
+	var bookings =[]string{}
 	
 
 	var firstName string
@@ -41,16 +41,18 @@ func main(){
 
 
 	remainingTickets  = uint(remainingTickets) - uint(userTickets)
-	bookings[0] = firstName + " " + lastName
+	bookings = append (bookings, firstName + " " + lastName)
 
 	//lets print the contents of the bookings array
-	fmt.Printf("The whole array : %v ", bookings)
-	fmt.Printf("The first value of the  array : %v ", bookings[0])
-	fmt.Printf("The type of the array : %T ", bookings)
-	fmt.Printf("The length of the array : %v ", len(bookings))
+	fmt.Printf("The whole slice : %v \n", bookings)
+	fmt.Printf("The first value of the  slice : %v \n", bookings[0])
+	fmt.Printf("The type of the slice : %T \n", bookings)
+	fmt.Printf("The length of the slice : %v \n", len(bookings))
 
-	fmt.Printf("Thank you  %v %v for booking %v tickets. You will receive a confirmation email at %v \n",firstName,lastName,userTickets,email)
-	fmt.Printf("%v tickets remaining for the %v", remainingTickets, conferenceName)
+	fmt.Printf("Thank you  %v %v for booking %v tickets.\n You will receive a confirmation email at %v \n",firstName,lastName,userTickets,email)
+	fmt.Printf("%v tickets remaining for the %v\n", remainingTickets, conferenceName)
+
+	fmt.Printf("these are all our bookings : %v \n",bookings)
 
 
 
