@@ -27,7 +27,7 @@ for {
 		var firstName string
 		var lastName string
 		var email string
-		var userTickets int
+		var userTickets uint
 
 		//ask for user input
 		println("Enter your firstname!")
@@ -42,33 +42,35 @@ for {
 		println("Enter number of tickets!")
 		fmt.Scan(&userTickets)
 
-		if userTickets > int(remainingTickets){
-			fmt.Printf("we oly have %v tickets left so you cant book %v tickets\n", remainingTickets, userTickets)
-			continue
-		}
+		if userTickets < remainingTickets{
+
+			//lets print the contents of the bookings array
+			fmt.Printf("The whole slice : %v \n", bookings)
+			fmt.Printf("The first value of the  slice : %v \n", bookings[0])
+			fmt.Printf("The type of the slice : %T \n", bookings)
+			fmt.Printf("The length of the slice : %v \n", len(bookings))
+
+			fmt.Printf("Thank you  %v %v for booking %v tickets.\n You will receive a confirmation email at %v \n",firstName,lastName,userTickets,email)
+			fmt.Printf("%v tickets remaining for the %v\n", remainingTickets, conferenceName)
+
+			firstNames := []string{}
+			for _, element := range bookings{
+				var names = strings.Fields(element) //Fileds is just like the split function in python. you pass in the element  accessed with the for loop. 
+				//the fields method is from the strings library hence we need to import the string linrary
+				firstNames = append(firstNames, names [0])
+			}
+
+			fmt.Printf("The first names of th bookings are : %v\n",firstNames)
+				
+		} else if uint(userTickets) == (remainingTickets){
+			//do something else
+		}else{
+				fmt.Printf("we oly have %v tickets left so you cant book %v tickets\n", remainingTickets, userTickets)
+			}
+		
 		
 
-		remainingTickets  = uint(remainingTickets) - uint(userTickets)
-		bookings = append (bookings, firstName + " " + lastName)
-
-		//lets print the contents of the bookings array
-		fmt.Printf("The whole slice : %v \n", bookings)
-		fmt.Printf("The first value of the  slice : %v \n", bookings[0])
-		fmt.Printf("The type of the slice : %T \n", bookings)
-		fmt.Printf("The length of the slice : %v \n", len(bookings))
-
-		fmt.Printf("Thank you  %v %v for booking %v tickets.\n You will receive a confirmation email at %v \n",firstName,lastName,userTickets,email)
-		fmt.Printf("%v tickets remaining for the %v\n", remainingTickets, conferenceName)
-
-		firstNames := []string{}
-		for _, element := range bookings{
-			var names = strings.Fields(element) //Fileds is just like the split function in python. you pass in the element  accessed with the for loop. 
-			//the fields method is from the strings library hence we need to import the string linrary
-			firstNames = append(firstNames, names [0])
-		}
-
-		fmt.Printf("The first names of th bookings are : %v\n",firstNames)
-
+		
 		if remainingTickets == 0{
 
 			//end program
